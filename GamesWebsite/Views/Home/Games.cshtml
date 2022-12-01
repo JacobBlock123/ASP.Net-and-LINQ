@@ -1,0 +1,12 @@
+﻿@model VideoGameRepository;
+@{
+    ViewData["Title"] = "Games";
+}
+<h1>@ViewData["Title"]</h1>
+
+@foreach (var v in Model.VideoGames)
+{
+    <li>@v.Title</li>
+}
+
+
