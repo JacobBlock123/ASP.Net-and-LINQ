@@ -1,7 +1,15 @@
-﻿namespace GamesWebsite.Controllers
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GamesWebsite.Models
 {
-    abstract internal class Company
+    abstract public class Company
     {
+        private static int _nextId { get; set; } = 1;
+        public int Id { get; } = _nextId++;
         public string Name { get; }
         public double Income { get; private set; }
 
@@ -10,9 +18,13 @@
             Name = name;
             Income = income;
         }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 
-    internal class Studio : Company
+    public class Studio : Company
     {
         private HashSet<VideoGame> _videoGames { get; set; } = new();
         public HashSet<VideoGame> VideoGames { get { return _videoGames.ToHashSet(); } }
@@ -25,7 +37,7 @@
         }
     }
 
-    internal class Publisher : Company
+    public class Publisher : Company
     {
         private HashSet<Studio> _studios { get; set; } = new();
         public HashSet<Studio> Studios { get { return _studios.ToHashSet(); } }

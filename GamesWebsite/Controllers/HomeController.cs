@@ -25,8 +25,16 @@ namespace GamesWebsite.Controllers
 
         public IActionResult Games()
         {
-            return View();
+            VideoGameRepository repo = new VideoGameRepository();
+            return View(repo);
         }
+
+        public IActionResult GameDetails(string id)
+        {
+            VideoGameRepository repo = new VideoGameRepository();
+            VideoGame game = repo.VideoGames.FirstOrDefault(i => i.Title.ToLower() == id.ToLower());
+            return View(game);
+        } 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

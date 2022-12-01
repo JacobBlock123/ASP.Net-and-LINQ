@@ -1,4 +1,10 @@
-﻿namespace GamesWebsite.Controllers
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GamesWebsite.Models
 {
     public class VideoGameRepository
     {
@@ -9,6 +15,7 @@
 
         public VideoGameRepository()
         {
+            VideoGames = new HashSet<VideoGame>();
             Studio WildcardStudio = new("Wildcard Studio", 4_000_000);
             Studios.Add(WildcardStudio);
 
@@ -277,7 +284,7 @@
             Studios.Add(FromSoftware);
 
             VideoGame EldenRing = new(
-                title: "elden ring",
+                title: "Elden Ring",
                 category: "Action RPG",
                 year: 2022,
                 playerCount: 1,
